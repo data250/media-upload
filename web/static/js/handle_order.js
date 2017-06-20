@@ -1,7 +1,7 @@
 ;
 
 var handleOrderForm = function(form) {
-    var emailField = document.getElementsByClassName('order-crtl--client-email')[0];
+    var emailField = document.getElementById('order-crtl--client-email');
     var email = emailField.value;
 
     orderHandler.requestForEmail(email);

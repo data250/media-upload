@@ -1,30 +1,83 @@
-<html>
+<html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="WPC media-upload project">
+        <link rel="icon" href="../static/images/favicon.ico">
+
+        <title>WPC media-upload project</title>
+
+
+        <!-- Bootstrap modified CSS -->
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/starter-template.css') }}" rel="stylesheet">
         <link
             rel="stylesheet"
             href="{{ url_for('static', filename='css/dropzone.min.css') }}"
-        />
+            />
     </head>
     <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">WPC media-upload project</a>
+                </div>
 
-        <form action="{{ url_for('upload_file')}}" class="upload-zone dropzone">
-          <div class="fallback">
-            <input name="uploaded_media" type="file" multiple />
-          </div>
-        </form>
-        <form
-            action="{{ url_for('process_order')}}"
-            class="order-ctrl"
-            onsubmit="event.preventDefault(); handleOrderForm(this);"
-        >
-            <input class="order-crtl--client-email" name="email" type="email" placeholder="Your email..."/>
-            <button type="submit" class="order-ctrl--confirm">
-                Confirm Order
-            </button>
-            <button type="button" class="order-ctrl--reset">
-                Clear Order
-            </button>
-        </form>
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="starter-template">
+                <h1>Chose files to upload:</h1>
+                <p class="lead">Click on the rectangle below and select the files or drag and drop files over it. Enter the correct email address and click "Confirm order" or "Clear order" to upload other files.</p>
+                <form action="{{ url_for('upload_file')}}" class="upload-zone dropzone">
+                    <div class="fallback">
+                        <input name="uploaded_media" type="file" multiple />
+                    </div>
+                </form>
+                <form
+                    action="{{ url_for('process_order')}}"
+                    class="order-ctrl"
+                    onsubmit="event.preventDefault();
+                            handleOrderForm(this);"
+                    >
+                    <div class="form-group">
+
+                        <div class="row ">
+                            <div class="col-lg-1 col-lg-offset-3">
+                                <h4>Email:</h4>
+                            </div>
+                            <div class="col-lg-4">
+                                <input id="order-crtl--client-email" class="form-control" name="email" type="email" placeholder="Your email..."/>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col align-self-center">
+
+                            <button type="submit" id="order-ctrl--confirm" class="btn btn-success">
+                                Confirm Order
+                            </button>
+                            <button type="button" id="order-ctrl--reset" class="btn btn-danger">
+                                Clear Order
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div><!-- /.container -->
+
     </body>
     <script src="{{ url_for('static', filename='js/vendor/dropzone.js') }}"></script>
     <script src="{{ url_for('static', filename='js/vendor/axios.min.js') }}"></script>

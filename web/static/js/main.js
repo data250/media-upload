@@ -6,7 +6,7 @@ var orderStorage = new OrderStorage(localStorage);
 
 orderStorage.reset();
 
-var resetButton = document.getElementsByClassName('order-ctrl--reset')[0];
+var resetButton = document.getElementById('order-ctrl--reset');
 
 resetButton.addEventListener("click", function() {
     orderStorage.reset();
@@ -28,7 +28,7 @@ var myDropzone = new Dropzone(
     }
 );
 
-var confirmationForm = document.getElementsByClassName('order-ctrl')[0];
+var confirmationForm = document.getElementById('order-ctrl--confirm');
 
 var orderHandler = new OrderHandler(
     orderStorage,
